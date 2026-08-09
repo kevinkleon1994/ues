@@ -106,7 +106,7 @@
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button::after,body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
+    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
@@ -447,39 +447,59 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
 }
 </style>
 
-
-<style id="ues-menu-collapsed-clean">
-@media (min-width:851px){
-  body.sidebar-collapsed .sidebar{
-    overflow-x:hidden!important;
-  }
-  body.sidebar-collapsed .nav{
-    overflow-x:hidden!important;
-  }
-  body.sidebar-collapsed .nav button{
-    overflow:hidden!important;
-    max-width:100%!important;
-  }
-  body.sidebar-collapsed .nav-label{
-    display:none!important;
-    width:0!important;
-    max-width:0!important;
-    min-width:0!important;
-    margin:0!important;
-    padding:0!important;
-    overflow:hidden!important;
-    white-space:nowrap!important;
-  }
-  body.sidebar-collapsed .nav button::after,
-  body.sidebar-collapsed .nav button:hover::after,
-  body.sidebar-collapsed .nav button:focus::after,
-  body.sidebar-collapsed .nav button:focus-visible::after{
-    display:none!important;
-    content:none!important;
-  }
-}
+<style id="ues-developer-premium-ui">
+.developer-page-head{margin-bottom:14px;align-items:flex-end!important}
+.developer-kicker,.developer-card-eyebrow{display:block;color:#1180a6;font-size:10px;font-weight:900;letter-spacing:.14em;margin-bottom:5px}
+.developer-page-head h2{margin:0 0 3px}.developer-page-head p{margin:0;color:#6b7f8a}
+.developer-new-user-btn{min-height:42px;padding:0 18px;border-radius:11px;box-shadow:0 7px 18px rgba(8,117,155,.16)}
+.developer-summary{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:13px 16px;margin-bottom:14px;background:linear-gradient(135deg,#f8fcfe,#eef7fb);border:1px solid #d9e9f0;border-radius:14px}
+.developer-summary-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#08789c;background:#e2f3f8;font-size:18px}
+.developer-summary strong{display:block;color:#123d56}.developer-summary span{display:block;color:#71848e;font-size:12px;margin-top:2px}
+.developer-summary-count{min-width:80px;text-align:center;padding:6px 12px;border-left:1px solid #d8e6ec}
+.developer-summary-count b{display:block;font-size:20px;color:#074d72;line-height:1}.developer-summary-count span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-top:4px}
+.user-admin-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(430px,.9fr)!important;align-items:start;gap:16px!important}
+.user-admin-grid.editor-closed{grid-template-columns:minmax(0,1fr)!important}
+.user-admin-list,.user-editor{border:1px solid #dbe7ed!important;border-radius:16px!important;background:#fff!important;box-shadow:0 8px 24px rgba(22,61,82,.055)}
+.user-admin-list{padding:18px!important}.user-editor{padding:0!important;overflow:hidden;position:sticky;top:86px}.user-editor[hidden]{display:none!important}
+.developer-card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:2px 2px 15px;border-bottom:1px solid #edf2f5;margin-bottom:4px}
+.developer-card-head h3{margin:0;color:#123d56;font-size:18px}.developer-card-head p{margin:4px 0 0;font-size:12px;color:#748690}
+#listaUsuariosSistema{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:11px;padding-top:10px}
+#listaUsuariosSistema.empty{display:block}
+.user-row{display:flex!important;flex-direction:column;justify-content:space-between;min-width:0;min-height:172px;padding:14px!important;border:1px solid #e1eaee!important;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfdfe);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.user-row:hover{transform:translateY(-1px);border-color:#c8dde7!important;box-shadow:0 7px 18px rgba(16,69,96,.07)}.user-row:last-child{border-bottom:1px solid #e1eaee!important}
+.user-row-main{display:grid!important;grid-template-columns:50px minmax(0,1fr)!important;align-items:start!important;gap:11px!important}
+.user-list-avatar{width:48px!important;height:48px!important;border-radius:50%!important;object-fit:cover;background:#eaf3f7;border:2px solid #fff;box-shadow:0 0 0 1px #d9e5ea}
+.user-profile-initials{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0b6d91,#084567);color:#fff;font-weight:900;font-size:15px;box-shadow:0 0 0 1px #d9e5ea}
+.user-row b{display:block;color:#183f56;font-size:14px;line-height:1.25;margin:1px 0 2px}.user-row small{color:#6e818c!important;font-size:11px!important;line-height:1.45;margin:0!important}
+.user-module-line{margin-top:7px!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.user-card-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.dev-status{flex:0 0 auto;padding:4px 7px!important;font-size:9px!important;letter-spacing:.03em}
+.dev-actions{margin-top:13px!important;padding-top:11px;border-top:1px solid #edf2f5;gap:6px!important}.dev-actions .btn{min-height:30px;padding:5px 10px!important;border-radius:8px!important;font-size:11px!important}
+.developer-protected-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:900;letter-spacing:.04em;color:#6a5a00;background:#fff5c8;border:1px solid #eadb8e;padding:4px 7px;border-radius:999px}
+.developer-editor-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px 15px;border-bottom:1px solid #e6eef2;background:linear-gradient(135deg,#fbfdfe,#f4f9fb)}
+.developer-editor-head h3{margin:0;color:#123d56;font-size:19px}.developer-editor-head p{margin:4px 0 0;color:#73858f;font-size:11px}
+.developer-editor-close{width:34px;height:34px;border:1px solid #d8e5eb;border-radius:10px;background:#fff;color:#5f7784;font-size:21px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.developer-editor-close:hover{background:#eef6f9;color:#0b6d91}.user-editor form{padding:18px 20px 20px}.developer-form-grid{gap:13px!important}
+.developer-form-grid label{font-size:11px!important;color:#334f60!important}.developer-form-grid input,.developer-form-grid select{min-height:41px!important;border-radius:9px!important}
+.developer-photo-section,.developer-module-section{border-top:1px solid #edf2f5;padding-top:14px;margin-top:1px}
+.premium-photo-editor{margin-top:7px;display:grid!important;grid-template-columns:66px minmax(0,1fr)!important;gap:13px!important;align-items:center!important;padding:12px!important;border:1px solid #dfe9ee;border-radius:12px;background:#f9fbfc}
+.premium-photo-preview{position:relative;width:62px;height:62px}.premium-photo-preview .user-photo-preview{position:relative;z-index:2;width:62px!important;height:62px!important;border-radius:50%;object-fit:cover;background:transparent!important}
+.premium-photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;background:#e9f2f6;color:#718895;font-size:24px;border:1px solid #d2e2e9}
+.premium-photo-copy strong{display:block;color:#314f60;font-size:12px}.premium-photo-copy small{display:block;margin:3px 0 8px;color:#758791;font-size:10px}.premium-photo-actions{display:flex;gap:6px;flex-wrap:wrap}
+.developer-section-title small{display:block;color:#758791;font-size:10px;margin-top:2px}.module-checks{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+.module-check{min-height:38px;padding:8px 10px!important;border-radius:9px!important;background:#fbfdfe!important;transition:border-color .15s,background .15s}.module-check:hover{background:#f1f8fb!important;border-color:#c3dce7!important}
+.developer-form-actions{display:flex!important;justify-content:flex-end;gap:8px;border-top:1px solid #edf2f5;padding-top:14px;margin-top:2px}
+body.dark-mode .developer-summary{background:linear-gradient(135deg,#102b3b,#123246)!important;border-color:#24485a!important}
+body.dark-mode .developer-summary-icon{background:#153f54!important;color:#79d7ef!important}
+body.dark-mode .developer-summary strong,body.dark-mode .developer-summary-count b,body.dark-mode .developer-card-head h3,body.dark-mode .developer-editor-head h3,body.dark-mode .user-row b{color:#e8f5fb!important}
+body.dark-mode .developer-summary span,body.dark-mode .developer-page-head p,body.dark-mode .developer-card-head p,body.dark-mode .developer-editor-head p,body.dark-mode .user-row small{color:#9eb3bf!important}
+body.dark-mode .user-admin-list,body.dark-mode .user-editor,body.dark-mode .user-row{background:#102635!important;border-color:#294657!important}
+body.dark-mode .user-row{background:linear-gradient(180deg,#132b3a,#102635)!important}
+body.dark-mode .developer-card-head,body.dark-mode .developer-editor-head,body.dark-mode .dev-actions,body.dark-mode .developer-photo-section,body.dark-mode .developer-module-section,body.dark-mode .developer-form-actions{border-color:#294657!important}
+body.dark-mode .developer-editor-head{background:linear-gradient(135deg,#132c3b,#102635)!important}
+body.dark-mode .premium-photo-editor,body.dark-mode .module-check{background:#132c3b!important;border-color:#2b4a5b!important}
+@media(max-width:1100px){.user-admin-grid{grid-template-columns:1fr!important}.user-editor{position:static}}
+@media(max-width:700px){.developer-page-head{align-items:stretch!important}.developer-new-user-btn{width:100%}.developer-summary{grid-template-columns:40px 1fr}.developer-summary-count{display:none}#listaUsuariosSistema{grid-template-columns:1fr}.module-checks{grid-template-columns:1fr!important}.premium-photo-editor{grid-template-columns:1fr!important;text-align:center}.premium-photo-preview{margin:auto}.premium-photo-actions{justify-content:center}}
 </style>
-
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
@@ -540,14 +560,14 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
       <div class="brand-copy"><h1>UES Gestão Acadêmica</h1><p>Universidade da Escola Sabatina</p></div>
     </div>
     <nav class="nav">
-      <button class="active" data-view="dashboard" data-label="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
-      <button data-view="aulas" data-label="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
-      <button data-view="alunos" data-label="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
-      <button data-view="historico" data-label="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
-      <button data-view="relatorios" data-label="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
-      <button data-view="mensagens" data-label="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
-      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
-      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
+      <button class="active" data-view="dashboard" data-label="Dashboard" title="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
+      <button data-view="aulas" data-label="Aulas" title="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
+      <button data-view="alunos" data-label="Alunos" title="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
+      <button data-view="historico" data-label="Histórico" title="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
+      <button data-view="relatorios" data-label="Relatórios" title="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
+      <button data-view="mensagens" data-label="Central de Mensagens" title="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
+      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor" title="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
+      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios" title="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
     </nav>
     <div class="sidebar-user-card"><div class="user-box"><img id="sidebarUserAvatar" class="sidebar-user-avatar" alt="Foto do usuário"><div class="sidebar-user-copy"><strong id="sidebarUserName">Usuário</strong><span id="sidebarUserRole">Função</span><button type="button" onclick="sairUESV302()">Sair</button></div></div></div>
     <div class="side-foot">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.4</div>
@@ -627,12 +647,94 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
       </section>
       
 <section class="view" id="view-desenvolvedor">
-  <div class="page-head"><div><h2>Opções do desenvolvedor</h2><p>Crie usuários, defina funções, status e acessos aos módulos do sistema.</p></div><button class="btn" type="button" onclick="novoUsuarioSistema()">+ Novo usuário</button></div>
-  <div class="user-admin-grid">
-    <article class="user-admin-list"><h3>Usuários cadastrados</h3><div id="listaUsuariosSistema" class="empty">Carregando usuários...</div></article>
-    <article class="user-editor"><h3 id="tituloEditorUsuario">Novo usuário</h3>
-      <form id="formUsuarioSistema" onsubmit="salvarUsuarioSistema(event)"><input type="hidden" id="usuarioSistemaId">
-      <div class="form-grid"><div><label>Nome completo</label><input id="usuarioSistemaNome" required></div><div><label>Usuário</label><input id="usuarioSistemaLogin" required autocomplete="off"></div><div><label>Senha</label><input id="usuarioSistemaSenha" type="password" placeholder="Deixe vazio para manter a atual"></div><div><label>Função</label><input id="usuarioSistemaFuncao" list="funcoesUsuarios" required><datalist id="funcoesUsuarios"><option>Administrador</option><option>Secretaria Acadêmica</option><option>Coordenador</option><option>Professor</option><option>Consulta</option></datalist></div><div><label>Status</label><select id="usuarioSistemaAtivo"><option value="true">Ativo</option><option value="false">Inativo</option></select></div><div class="full"><label>Foto de perfil</label><input id="usuarioSistemaFoto" type="hidden"><input id="usuarioSistemaFotoArquivo" type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="selecionarFotoUsuarioSistema(event)"><div class="user-photo-editor"><img id="usuarioSistemaFotoPreview" class="user-photo-preview" alt="Prévia da foto"><div><button type="button" class="btn small secondary" onclick="document.getElementById('usuarioSistemaFotoArquivo').click()">📷 Selecionar foto</button> <button type="button" class="btn small secondary" onclick="removerFotoUsuarioSistema()">Remover</button><small id="usuarioFotoStatus">A foto será salva na pasta UES - Fotos dos Usuários no Google Drive.</small></div></div></div><div class="full"><label>Acesso aos módulos</label><div class="module-checks" id="modulosUsuarioSistema"></div></div><div class="full" style="text-align:right"><button type="button" class="btn secondary" onclick="novoUsuarioSistema()">Limpar</button> <button class="btn">Salvar usuário</button></div></div></form>
+  <div class="page-head developer-page-head">
+    <div>
+      <div class="developer-kicker">ADMINISTRAÇÃO DO SISTEMA</div>
+      <h2>Opções do desenvolvedor</h2>
+      <p>Gerencie usuários, funções, status e permissões de acesso aos módulos.</p>
+    </div>
+    <button class="btn developer-new-user-btn" type="button" onclick="novoUsuarioSistema()">+ Novo usuário</button>
+  </div>
+
+  <div class="developer-summary">
+    <div class="developer-summary-icon">⚙</div>
+    <div>
+      <strong>Gestão de usuários</strong>
+      <span>Cadastros e permissões de acesso ao Sistema de Gestão Acadêmica.</span>
+    </div>
+    <div class="developer-summary-count">
+      <b id="totalUsuariosSistema">0</b>
+      <span>usuários</span>
+    </div>
+  </div>
+
+  <div class="user-admin-grid editor-closed" id="userAdminGrid">
+    <article class="user-admin-list">
+      <div class="developer-card-head">
+        <div>
+          <span class="developer-card-eyebrow">CONTAS DE ACESSO</span>
+          <h3>Usuários cadastrados</h3>
+          <p>Visualize os perfis, permissões e situação de cada usuário.</p>
+        </div>
+      </div>
+      <div id="listaUsuariosSistema" class="empty">Carregando usuários...</div>
+    </article>
+
+    <article class="user-editor" id="userEditorPanel" hidden>
+      <div class="developer-editor-head">
+        <div>
+          <span class="developer-card-eyebrow" id="subtituloEditorUsuario">CADASTRO DE ACESSO</span>
+          <h3 id="tituloEditorUsuario">Novo usuário</h3>
+          <p id="descricaoEditorUsuario">Preencha os dados e defina os módulos disponíveis para este perfil.</p>
+        </div>
+        <button type="button" class="developer-editor-close" onclick="fecharEditorUsuarioSistema()" aria-label="Fechar">×</button>
+      </div>
+
+      <form id="formUsuarioSistema" onsubmit="salvarUsuarioSistema(event)">
+        <input type="hidden" id="usuarioSistemaId">
+        <div class="form-grid developer-form-grid">
+          <div><label>Nome completo</label><input id="usuarioSistemaNome" required></div>
+          <div><label>Usuário</label><input id="usuarioSistemaLogin" required autocomplete="off"></div>
+          <div><label>Senha</label><input id="usuarioSistemaSenha" type="password" placeholder="Deixe vazio para manter a atual"></div>
+          <div><label>Função</label><input id="usuarioSistemaFuncao" list="funcoesUsuarios" required><datalist id="funcoesUsuarios"><option>Administrador</option><option>Secretaria Acadêmica</option><option>Coordenador</option><option>Professor</option><option>Consulta</option></datalist></div>
+          <div><label>Status</label><select id="usuarioSistemaAtivo"><option value="true">Ativo</option><option value="false">Inativo</option></select></div>
+
+          <div class="full developer-photo-section">
+            <label>Foto de perfil</label>
+            <input id="usuarioSistemaFoto" type="hidden">
+            <input id="usuarioSistemaFotoArquivo" type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="selecionarFotoUsuarioSistema(event)">
+            <div class="user-photo-editor premium-photo-editor">
+              <div class="premium-photo-preview">
+                <img id="usuarioSistemaFotoPreview" class="user-photo-preview" alt="Prévia da foto">
+                <span class="premium-photo-placeholder">👤</span>
+              </div>
+              <div class="premium-photo-copy">
+                <strong>Imagem do perfil</strong>
+                <small id="usuarioFotoStatus">A foto será salva na pasta UES - Fotos dos Usuários no Google Drive.</small>
+                <div class="premium-photo-actions">
+                  <button type="button" class="btn small secondary" onclick="document.getElementById('usuarioSistemaFotoArquivo').click()">📷 Selecionar foto</button>
+                  <button type="button" class="btn small secondary" onclick="removerFotoUsuarioSistema()">Remover</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="full developer-module-section">
+            <div class="developer-section-title">
+              <div>
+                <label>Acesso aos módulos</label>
+                <small>Marque somente os módulos que este usuário poderá visualizar.</small>
+              </div>
+            </div>
+            <div class="module-checks" id="modulosUsuarioSistema"></div>
+          </div>
+
+          <div class="full developer-form-actions">
+            <button type="button" class="btn secondary" onclick="fecharEditorUsuarioSistema()">Cancelar</button>
+            <button class="btn">Salvar usuário</button>
+          </div>
+        </div>
+      </form>
     </article>
   </div>
 </section>
@@ -665,12 +767,64 @@ function aplicarPermissoesPerfil(){
   const info=$('sessionUserInfo');if(info&&APP.perfil)info.textContent=APP.perfil.nome+' · '+APP.perfil.funcao;
 }
 function primeiroModuloPermitido(){return ['dashboard','aulas','alunos','historico','relatorios','mensagens'].find(usuarioPode)||(APP.perfil?.desenvolvedor?'desenvolvedor':'dashboard')}
-async function loadUsuariosSistema(){if(!APP.perfil?.desenvolvedor)return;const r=await callServer('webAppListarUsuarios',APP.perfil.token);APP.usuariosSistema=r.usuarios||[];APP.modulosSistema=r.modulos||Object.keys(ROTULOS_MODULOS);renderUsuariosSistema();novoUsuarioSistema()}
-function renderUsuariosSistema(){const box=$('listaUsuariosSistema');if(!box)return;box.innerHTML=APP.usuariosSistema.length?APP.usuariosSistema.map(u=>`<div class="user-row"><div class="user-row-main"><img class="user-list-avatar" src="${esc(u.foto||'')}" onerror="this.style.visibility='hidden'" alt=""><div><b>${esc(u.nome)}</b><small>@${esc(u.usuario)} · ${esc(u.funcao)}<br>${esc((u.modulos||[]).map(m=>ROTULOS_MODULOS[m]||m).join(', '))}</small><div class="dev-actions"><button class="btn small secondary" onclick="editarUsuarioSistema('${esc(u.id)}')">Editar</button><button class="btn small ${u.ativo?'red':'green'}" onclick="alternarUsuarioSistema('${esc(u.id)}',${!u.ativo})">${u.ativo?'Inativar':'Ativar'}</button><button class="btn small red" onclick="excluirUsuarioSistema('${esc(u.id)}')">Excluir</button></div></div></div><span class="dev-status ${u.ativo?'active':'inactive'}">${u.ativo?'Ativo':'Inativo'}</span></div>`).join(''):'<div class="empty">Nenhum usuário cadastrado.</div>'}
+async function loadUsuariosSistema(){if(!APP.perfil?.desenvolvedor)return;const r=await callServer('webAppListarUsuarios',APP.perfil.token);APP.usuariosSistema=r.usuarios||[];APP.modulosSistema=r.modulos||Object.keys(ROTULOS_MODULOS);renderUsuariosSistema();fecharEditorUsuarioSistema(true)}
+function renderUsuariosSistema(){
+  const box=$('listaUsuariosSistema');if(!box)return;
+  const total=$('totalUsuariosSistema');if(total)total.textContent=String(APP.usuariosSistema.length||0);
+  const iniciais=nome=>String(nome||'?').trim().split(/\s+/).slice(0,2).map(p=>p.charAt(0).toUpperCase()).join('')||'?';
+  box.innerHTML=APP.usuariosSistema.length?APP.usuariosSistema.map(u=>{
+    const protegido=!!(u.desenvolvedor||u.protegido||u.id==='DEV');
+    const avatar=u.foto?`<img class="user-list-avatar" src="${esc(u.foto)}" alt="${esc(u.nome)}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="user-profile-initials" style="display:none">${esc(iniciais(u.nome))}</span>`:`<span class="user-profile-initials">${esc(iniciais(u.nome))}</span>`;
+    const modulos=esc((u.modulos||[]).map(m=>ROTULOS_MODULOS[m]||m).join(', '));
+    const status=`<span class="dev-status ${u.ativo?'active':'inactive'}">${u.ativo?'Ativo':'Inativo'}</span>`;
+    const protegidoBadge=protegido?'<span class="developer-protected-badge">🔒 Protegido</span>':'';
+    const actions=protegido?`<div class="dev-actions"><button class="btn small secondary" onclick="editarUsuarioSistema('${esc(u.id)}')">Editar perfil</button>${protegidoBadge}</div>`:`<div class="dev-actions"><button class="btn small secondary" onclick="editarUsuarioSistema('${esc(u.id)}')">Editar</button><button class="btn small ${u.ativo?'red':'green'}" onclick="alternarUsuarioSistema('${esc(u.id)}',${!u.ativo})">${u.ativo?'Inativar':'Ativar'}</button><button class="btn small red" onclick="excluirUsuarioSistema('${esc(u.id)}')">Excluir</button></div>`;
+    return `<div class="user-row"><div class="user-card-top"><div class="user-row-main"><div>${avatar}</div><div><b>${esc(u.nome)}</b><small>@${esc(u.usuario)} · ${esc(u.funcao)}</small><small class="user-module-line">${modulos||'Sem módulos atribuídos'}</small></div></div>${status}</div>${actions}</div>`;
+  }).join(''):'<div class="empty">Nenhum usuário cadastrado.</div>';
+}
 function renderChecksModulos(selecionados=[]){$('modulosUsuarioSistema').innerHTML=(APP.modulosSistema.length?APP.modulosSistema:Object.keys(ROTULOS_MODULOS)).map(m=>`<label class="module-check"><input type="checkbox" name="moduloUsuario" value="${m}" ${selecionados.includes(m)?'checked':''}> ${ROTULOS_MODULOS[m]||m}</label>`).join('')}
-function novoUsuarioSistema(){$('formUsuarioSistema')?.reset();APP.fotoUsuarioPendente=null;if($('usuarioSistemaId'))$('usuarioSistemaId').value='';if($('usuarioSistemaFoto'))$('usuarioSistemaFoto').value='';if($('usuarioSistemaFotoPreview'))$('usuarioSistemaFotoPreview').removeAttribute('src');if($('tituloEditorUsuario'))$('tituloEditorUsuario').textContent='Novo usuário';renderChecksModulos([])}
-function editarUsuarioSistema(id){const u=APP.usuariosSistema.find(x=>x.id===id);if(!u)return;APP.fotoUsuarioPendente=null;$('tituloEditorUsuario').textContent='Editar usuário';$('usuarioSistemaId').value=u.id;$('usuarioSistemaNome').value=u.nome;$('usuarioSistemaLogin').value=u.usuario;$('usuarioSistemaSenha').value='';$('usuarioSistemaFuncao').value=u.funcao;$('usuarioSistemaAtivo').value=String(u.ativo);$('usuarioSistemaFoto').value=u.foto||'';if(u.foto)$('usuarioSistemaFotoPreview').src=u.foto;else $('usuarioSistemaFotoPreview').removeAttribute('src');renderChecksModulos(u.modulos||[])}
-async function salvarUsuarioSistema(e){e.preventDefault();try{const foto=await enviarFotoUsuarioPendenteV104();const d={id:$('usuarioSistemaId').value,nome:$('usuarioSistemaNome').value,usuario:$('usuarioSistemaLogin').value,senha:$('usuarioSistemaSenha').value,funcao:$('usuarioSistemaFuncao').value,ativo:$('usuarioSistemaAtivo').value==='true',foto:foto||'',modulos:[...document.querySelectorAll('input[name="moduloUsuario"]:checked')].map(x=>x.value)};const r=await callServer('webAppSalvarUsuario',APP.perfil.token,d);toast(r.mensagem||'Usuário salvo.');await loadUsuariosSistema()}catch(err){toast(err.message,true)}}
+function abrirEditorUsuarioSistema(){
+  const painel=$('userEditorPanel'),grid=$('userAdminGrid');
+  if(painel)painel.hidden=false;
+  if(grid)grid.classList.remove('editor-closed');
+  setTimeout(()=>painel?.scrollIntoView({behavior:'smooth',block:'start'}),40);
+}
+function fecharEditorUsuarioSistema(silencioso=false){
+  const painel=$('userEditorPanel'),grid=$('userAdminGrid');
+  if(painel)painel.hidden=true;
+  if(grid)grid.classList.add('editor-closed');
+  if(!silencioso){$('formUsuarioSistema')?.reset();APP.fotoUsuarioPendente=null}
+}
+function novoUsuarioSistema(){
+  $('formUsuarioSistema')?.reset();APP.fotoUsuarioPendente=null;
+  if($('usuarioSistemaId'))$('usuarioSistemaId').value='';
+  if($('usuarioSistemaFoto'))$('usuarioSistemaFoto').value='';
+  if($('usuarioSistemaFotoPreview'))$('usuarioSistemaFotoPreview').removeAttribute('src');
+  if($('tituloEditorUsuario'))$('tituloEditorUsuario').textContent='Novo usuário';
+  if($('subtituloEditorUsuario'))$('subtituloEditorUsuario').textContent='CADASTRO DE ACESSO';
+  if($('descricaoEditorUsuario'))$('descricaoEditorUsuario').textContent='Preencha os dados e defina os módulos disponíveis para este perfil.';
+  renderChecksModulos([]);abrirEditorUsuarioSistema();
+}
+function editarUsuarioSistema(id){
+  const u=APP.usuariosSistema.find(x=>x.id===id);if(!u)return;APP.fotoUsuarioPendente=null;
+  $('tituloEditorUsuario').textContent=u.desenvolvedor?'Editar desenvolvedor':'Editar usuário';
+  if($('subtituloEditorUsuario'))$('subtituloEditorUsuario').textContent=u.desenvolvedor?'PERFIL PRINCIPAL':'EDIÇÃO DE ACESSO';
+  if($('descricaoEditorUsuario'))$('descricaoEditorUsuario').textContent=u.desenvolvedor?'Atualize as informações permitidas do perfil principal do sistema.':'Atualize os dados e as permissões deste usuário.';
+  $('usuarioSistemaId').value=u.id;$('usuarioSistemaNome').value=u.nome;$('usuarioSistemaLogin').value=u.usuario;$('usuarioSistemaSenha').value='';$('usuarioSistemaFuncao').value=u.funcao;$('usuarioSistemaAtivo').value=String(u.ativo);$('usuarioSistemaFoto').value=u.foto||'';
+  if(u.foto)$('usuarioSistemaFotoPreview').src=u.foto;else $('usuarioSistemaFotoPreview').removeAttribute('src');
+  renderChecksModulos(u.modulos||[]);abrirEditorUsuarioSistema();
+}
+async function salvarUsuarioSistema(e){
+  e.preventDefault();
+  try{
+    const foto=await enviarFotoUsuarioPendenteV104();
+    const d={id:$('usuarioSistemaId').value,nome:$('usuarioSistemaNome').value,usuario:$('usuarioSistemaLogin').value,senha:$('usuarioSistemaSenha').value,funcao:$('usuarioSistemaFuncao').value,ativo:$('usuarioSistemaAtivo').value==='true',foto:foto||'',modulos:[...document.querySelectorAll('input[name="moduloUsuario"]:checked')].map(x=>x.value)};
+    const r=await callServer('webAppSalvarUsuario',APP.perfil.token,d);
+    toast(r.mensagem||'Usuário salvo.');
+    fecharEditorUsuarioSistema(true);
+    await loadUsuariosSistema();
+  }catch(err){toast(err.message,true)}
+}
 async function alternarUsuarioSistema(id,ativo){try{await callServer('webAppAlternarUsuario',APP.perfil.token,id,ativo);await loadUsuariosSistema();toast(ativo?'Usuário ativado.':'Usuário inativado.')}catch(err){toast(err.message,true)}}
 async function excluirUsuarioSistema(id){if(!confirm('Excluir definitivamente este usuário?'))return;try{await callServer('webAppExcluirUsuario',APP.perfil.token,id);await loadUsuariosSistema();toast('Usuário excluído.')}catch(err){toast(err.message,true)}}
 
@@ -822,7 +976,7 @@ function printReport(){const html=$('reportPreview').innerHTML;const w=open('','
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button::after,body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
+    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
