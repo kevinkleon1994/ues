@@ -1,4 +1,4 @@
-const CACHE='ues-pwa-v1.0.2-enterprise';
+const CACHE='ues-pwa-v1.0.4-enterprise';
 const OFFLINE='./offline.html';
 const ASSETS=['./','./index.html','./offline.html','./manifest.webmanifest','./config.js','./ues-logo.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./apple-touch-icon.png','./favicon-16.png','./favicon-32.png','./favicon-48.png'];
 self.addEventListener('install',event=>{
