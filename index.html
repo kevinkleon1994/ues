@@ -226,6 +226,178 @@
     @media(max-width:850px){#dailyText{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:calc(100vw - 120px)!important;font-size:12px!important;line-height:1.25!important;margin-top:4px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}.nav{gap:9px!important;margin-top:10px!important}}
 
 </style>
+
+<style id="ues-mobile-toolbar-v102">
+/* ==========================================================
+   UES v1.0.2 — BARRA MOBILE COMPACTA / ANDROID / iOS / PWA
+   ========================================================== */
+@media (max-width:850px){
+  .topbar{
+    min-height:54px!important;
+    padding:7px 9px!important;
+    display:grid!important;
+    grid-template-columns:44px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    align-items:center!important;
+    column-gap:7px!important;
+    row-gap:5px!important;
+  }
+
+  .mobile-menu{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    margin:0!important;
+  }
+
+  .top-actions{
+    grid-column:2!important;
+    grid-row:1!important;
+    width:100%!important;
+    min-width:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    flex-wrap:nowrap!important;
+    gap:4px!important;
+    margin:0!important;
+  }
+
+  #lastUpdate{display:none!important}
+
+  .top-actions .icon-action{
+    width:34px!important;
+    height:34px!important;
+    min-width:34px!important;
+    flex:0 0 34px!important;
+    padding:0!important;
+    border-radius:9px!important;
+    font-size:16px!important;
+    line-height:1!important;
+  }
+
+  .connection-chip{
+    width:27px!important;
+    height:27px!important;
+    min-width:27px!important;
+    flex:0 0 27px!important;
+    padding:0!important;
+  }
+
+  .connection-dot{
+    width:9px!important;
+    height:9px!important;
+  }
+
+  .topbar>div:first-of-type{
+    grid-column:1/3!important;
+    grid-row:2!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+
+  .topbar h2{
+    font-size:18px!important;
+    line-height:1.2!important;
+    margin:2px 0 0!important;
+  }
+
+  .topbar small{
+    font-size:11.5px!important;
+    line-height:1.3!important;
+    margin-top:2px!important;
+  }
+
+  .content{padding-top:10px!important}
+}
+
+@media (max-width:430px){
+  .topbar{padding:6px 8px!important;column-gap:5px!important}
+  .top-actions{gap:3px!important}
+  .top-actions .icon-action{
+    width:31px!important;
+    height:31px!important;
+    min-width:31px!important;
+    flex-basis:31px!important;
+    font-size:15px!important;
+  }
+  .connection-chip{
+    width:24px!important;
+    height:24px!important;
+    min-width:24px!important;
+    flex-basis:24px!important;
+  }
+  .connection-dot{width:8px!important;height:8px!important}
+}
+
+/* Modo apresentação no celular:
+   remove todo o cabeçalho e mantém somente o botão para sair. */
+@media (max-width:850px){
+  body.presentation-mode .sidebar{display:none!important}
+
+  body.presentation-mode .topbar{
+    display:block!important;
+    position:fixed!important;
+    top:max(7px, env(safe-area-inset-top))!important;
+    right:8px!important;
+    left:auto!important;
+    width:38px!important;
+    height:38px!important;
+    min-height:38px!important;
+    padding:0!important;
+    margin:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    z-index:10000!important;
+  }
+
+  body.presentation-mode .mobile-menu,
+  body.presentation-mode .topbar>div:first-of-type,
+  body.presentation-mode #connectionChip,
+  body.presentation-mode #lastUpdate,
+  body.presentation-mode #installAppBtn,
+  body.presentation-mode .top-actions .icon-action:not([data-presentation-button]){
+    display:none!important;
+  }
+
+  body.presentation-mode .top-actions{
+    display:block!important;
+    width:38px!important;
+    height:38px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  body.presentation-mode [data-presentation-button]{
+    display:grid!important;
+    place-items:center!important;
+    width:38px!important;
+    height:38px!important;
+    min-width:38px!important;
+    padding:0!important;
+    border-radius:10px!important;
+    background:rgba(255,255,255,.96)!important;
+    border:1px solid #d6e4eb!important;
+    color:#083b5c!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.14)!important;
+  }
+
+  body.presentation-mode .shell{
+    grid-template-columns:1fr!important;
+  }
+
+  body.presentation-mode .content{
+    padding:10px!important;
+    padding-top:max(10px, env(safe-area-inset-top))!important;
+    max-width:none!important;
+  }
+}
+</style>
+
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
@@ -296,7 +468,7 @@
       <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios" title="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
     </nav>
     <div class="sidebar-user-card"><div class="user-box"><strong id="sidebarUserName">Usuário</strong><span id="sidebarUserRole">Função</span><button type="button" onclick="sairUESV302()">Sair</button></div></div>
-    <div class="side-foot">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.1</div>
+    <div class="side-foot">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.2</div>
   </aside>
   <main class="main">
     <header class="topbar">
@@ -382,7 +554,7 @@
   </div>
 </section>
 
-      <footer class="system-footer">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.1</footer>
+      <footer class="system-footer">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.2</footer>
 
     </div>
   </main>
@@ -922,7 +1094,7 @@ async function carregarTextoDiarioV31(){
   el.innerHTML='“Guardo no coração as tuas palavras, para não pecar contra ti.” <strong>— Salmo 119:11</strong>';
 }
 const _showViewV31=window.showView;window.showView=function(name){const r=_showViewV31.apply(this,arguments);if(name==='dashboard')carregarTextoDiarioV31();return r};
-window.addEventListener('DOMContentLoaded',()=>{uesIconButtonStateV31();carregarTextoDiarioV31();const foot=document.querySelector('.side-foot');if(foot)foot.textContent='Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.1';});
+window.addEventListener('DOMContentLoaded',()=>{uesIconButtonStateV31();carregarTextoDiarioV31();const foot=document.querySelector('.side-foot');if(foot)foot.textContent='Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.2';});
 
 </script>
 </body>
