@@ -404,6 +404,49 @@ body.dark-mode .content,body.dark-mode .topbar,body.dark-mode .view,body.dark-mo
 body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#091923!important;color:#e6f2f8!important;border-color:#36515e!important}body.dark-mode table,body.dark-mode th,body.dark-mode td{color:#d8e8f0!important;border-color:#29404c!important}body.dark-mode th{background:#132b38!important}body.dark-mode tbody tr:nth-child(even){background:#0a1a24!important}body.dark-mode a{color:#65c8ef}body.dark-mode .daily-text{background:#102631!important;color:#c8dce6!important;border-color:#345564!important}body.dark-mode .module-checks label{background:#102631!important;border-color:#345564!important;color:#d8e8f0!important}
 #darkModeBtn.active{background:#173d52!important;color:#fff!important}.sidebar-user-card .user-box{display:flex;align-items:center;gap:11px}.sidebar-user-avatar{width:52px;height:52px;flex:0 0 52px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#2d8ec0,#72c4e5);border:2px solid rgba(255,255,255,.28)}.sidebar-user-copy{min-width:0;flex:1}.user-row-main{display:flex;align-items:flex-start;gap:10px}.user-list-avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#dbeaf1}.user-photo-editor{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#f8fbfd}.user-photo-preview{width:82px;height:82px;border-radius:50%;object-fit:cover;background:#e7f0f5;border:2px solid #cce0ea}.user-photo-editor small{display:block;margin-top:9px;color:var(--muted)}body.sidebar-collapsed .sidebar-user-card{padding:10px 0 4px;border:0}body.sidebar-collapsed .sidebar-user-card .user-box{padding:0;background:transparent;border:0;justify-content:center}body.sidebar-collapsed .sidebar-user-copy{display:none}body.sidebar-collapsed .sidebar-user-avatar{width:50px;height:50px;flex-basis:50px}@media(max-width:850px){body.sidebar-collapsed .sidebar-user-copy{display:block}body.sidebar-collapsed .sidebar-user-card .user-box{padding:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);justify-content:flex-start}}.confirm-delete-card{max-width:520px}.warning-box{padding:14px;border-radius:10px;background:#fff3cd;border:1px solid #ffe69c;color:#664d03;font-weight:700}body.dark-mode .warning-box{background:#3a300b;border-color:#665514;color:#ffe6a3}.history-na{color:#9aaab3!important;text-align:center}.history-grade-low{color:#c62828!important;font-weight:800!important}
 </style>
+
+<style id="ues-hotfix-sorteios-menu-recolhido">
+/* ==========================================================
+   HOTFIX — SISTEMA DE SORTEIOS NO MENU RECOLHIDO
+   Mantém somente o ícone ★ no desktop.
+   Remove texto e tooltip lateral gerado por data-label.
+   ========================================================== */
+@media (min-width: 851px) {
+  body.sidebar-collapsed #btnSistemaSorteios .nav-label {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    max-width: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.sidebar-collapsed #btnSistemaSorteios {
+    justify-content: center !important;
+    gap: 0 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  body.sidebar-collapsed #btnSistemaSorteios .ico {
+    width: 26px !important;
+    margin: 0 !important;
+    flex: 0 0 26px !important;
+    text-align: center !important;
+  }
+
+  body.sidebar-collapsed #btnSistemaSorteios:hover::after,
+  body.sidebar-collapsed #btnSistemaSorteios::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+</style>
+
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
