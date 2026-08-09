@@ -447,55 +447,6 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
 }
 </style>
 
-
-<style id="ues-hotfix-menu-recolhido-v1043">
-/* ==========================================================
-   UES v1.0.4.3 — MENU LATERAL RECOLHIDO
-   - Remove nomes/tooltips dos ícones
-   - Remove rolagem horizontal
-   - Mantém apenas rolagem vertical quando necessária
-   ========================================================== */
-@media (min-width: 851px) {
-  body.sidebar-collapsed .sidebar {
-    overflow-x: hidden !important;
-  }
-
-  body.sidebar-collapsed .nav {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    scrollbar-gutter: auto !important;
-  }
-
-  /* Nenhum tooltip CSS quando o menu estiver recolhido. */
-  body.sidebar-collapsed .nav button::after,
-  body.sidebar-collapsed .nav button:hover::after,
-  body.sidebar-collapsed .nav button:focus::after,
-  body.sidebar-collapsed .nav button:focus-visible::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  body.sidebar-collapsed .nav button {
-    overflow: hidden !important;
-  }
-
-  /* Impede que qualquer texto invisível aumente a largura do menu. */
-  body.sidebar-collapsed .nav-label {
-    display: none !important;
-    width: 0 !important;
-    min-width: 0 !important;
-    max-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  body.sidebar-collapsed .sidebar-user-card {
-    overflow-x: hidden !important;
-  }
-}
-</style>
-
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
@@ -815,54 +766,7 @@ function colunaHistoricoPermitidaV104(r,modAluno,i,head){const m=moduloAulaHisto
 function indicesHistoricoAlunoV104(r,modAluno){return (r.cabecalhos||[]).map((_,i)=>i).filter(i=>colunaHistoricoPermitidaV104(r,modAluno,i,r.cabecalhos[i]))}
 function renderHistorico(){const r=APP.historico||{cabecalhos:[],dados:[],modulos:[],whatsapps:[],aulaModulos:[]},heads=r.cabecalhos||[];const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');const idxNome=heads.findIndex(h=>['nome','nomedoaluno','aluno'].includes(norm(h)));const idxMedia=heads.findIndex(h=>['media','mediafinal'].includes(norm(h)));const idxConc=heads.findIndex(h=>['conclusao','situacao','status'].includes(norm(h)));const filtro=$('filtroNomeHistorico').value.trim().toLowerCase(),modulo=$('filtroModuloHistorico').value;let rows=(r.dados||[]).map((row,i)=>({row,idx:i,modulo:(r.modulos||[])[i]||'',whatsapp:(r.whatsapps||[])[i]||''})).filter(x=>(!filtro||String(x.row[idxNome]||'').toLowerCase().includes(filtro))&&(!modulo||x.modulo===modulo));const ord=$('ordenarHistorico').value;rows.sort((a,b)=>{if(ord==='media')return (parseFloat(String(b.row[idxMedia]||'0').replace(',','.'))||0)-(parseFloat(String(a.row[idxMedia]||'0').replace(',','.'))||0);if(ord==='conclusao')return String(a.row[idxConc]||'').localeCompare(String(b.row[idxConc]||''),'pt-BR',{sensitivity:'base'});return String(a.row[idxNome]||'').localeCompare(String(b.row[idxNome]||''),'pt-BR',{sensitivity:'base'})});let visibleIndexes=heads.map((_,i)=>i);if(modulo&&modulo!=='Módulo Misto')visibleIndexes=visibleIndexes.filter(i=>colunaHistoricoPermitidaV104(r,modulo,i,heads[i]));const visibleHeads=visibleIndexes.map(i=>heads[i]);atualizarContagem('countHistorico',rows.length,'registro');$('theadHistorico').innerHTML='<tr><th>Módulo</th>'+visibleHeads.map(h=>`<th>${esc(h)}</th>`).join('')+'<th>Ações</th></tr>';$('tbodyHistorico').innerHTML=rows.length?rows.map(x=>'<tr><td>'+esc(x.modulo)+'</td>'+visibleIndexes.map(i=>{if(!colunaHistoricoPermitidaV104(r,x.modulo,i,heads[i]))return '<td class="history-na">—</td>';const v=x.row[i]||'';const cls=uesNotaHistoricoV101(v,heads[i])?' class="history-grade-low"':'';return `<td${cls}>${esc(v)}</td>`}).join('')+`<td class="actions"><button class="btn small secondary" onclick="imprimirHistoricoAlunoV104(${x.idx})">Imprimir</button><button class="btn small green" onclick="enviarHistoricoWhatsAppV104(${x.idx})">WhatsApp</button></td></tr>`).join(''):`<tr><td colspan="${Math.max(1,visibleHeads.length+2)}" class="empty">Nenhum registro encontrado.</td></tr>`}
 function historicoAlunoDadosV104(idx){const r=APP.historico||{},row=(r.dados||[])[idx]||[],mod=(r.modulos||[])[idx]||'',heads=r.cabecalhos||[],inds=indicesHistoricoAlunoV104(r,mod);return{r,row,mod,heads,inds,whatsapp:(r.whatsapps||[])[idx]||''}}
-function imprimirHistoricoAlunoV104(idx){const d=historicoAlunoDadosV104(idx),nome=d.row[0]||'Aluno';const linhas=d.inds.map(i=>{const v=d.row[i]||'',low=uesNotaHistoricoV101(v,d.heads[i]);return `<tr><th>${esc(d.heads[i])}</th><td${low?' style="color:#b42318;font-weight:800"':''}>${esc(v||'—')}</td></tr>`}).join('');const w=open('','_blank');w.document.write(`<html><head><meta charset="utf-8"><title>Histórico - ${esc(nome)}</title><style>body{font-family:Arial;padding:28px;color:#15384c}h1{color:#073b61}table{width:100%;border-collapse:collapse}th,td{border:1px solid #d7e3e9;padding:9px;text-align:left}th{background:#eef6fa;width:35%}.meta{margin-bottom:18px}</style></head><body><h1>UNIVERSIDADE DA ESCOLA SABATINA</h1><div class="meta"><b>${esc(nome)}</b><br>Módulo: ${esc(d.mod)}</div><table>${linhas}</table><script>print()<\/script>
-<script id="ues-hotfix-menu-titles-v1043">
-(function(){
-  function atualizarTitulosMenuRecolhido(){
-    var recolhido = window.innerWidth > 850 &&
-      document.body.classList.contains('sidebar-collapsed');
-
-    document.querySelectorAll('.nav button').forEach(function(botao){
-      if (!botao.dataset.uesOriginalTitle) {
-        botao.dataset.uesOriginalTitle =
-          botao.getAttribute('title') ||
-          botao.getAttribute('data-label') ||
-          '';
-      }
-
-      if (recolhido) {
-        botao.removeAttribute('title');
-      } else if (botao.dataset.uesOriginalTitle) {
-        botao.setAttribute('title', botao.dataset.uesOriginalTitle);
-      }
-    });
-  }
-
-  window.uesAtualizarTitulosMenuRecolhido = atualizarTitulosMenuRecolhido;
-
-  document.addEventListener('DOMContentLoaded', function(){
-    setTimeout(atualizarTitulosMenuRecolhido, 0);
-  });
-
-  window.addEventListener('resize', atualizarTitulosMenuRecolhido);
-
-  var observer = new MutationObserver(function(mutations){
-    for (var i = 0; i < mutations.length; i++) {
-      if (mutations[i].attributeName === 'class') {
-        atualizarTitulosMenuRecolhido();
-        break;
-      }
-    }
-  });
-
-  observer.observe(document.body, {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-})();
-</script>
-
-</body></html>`);w.document.close()}
+function imprimirHistoricoAlunoV104(idx){const d=historicoAlunoDadosV104(idx),nome=d.row[0]||'Aluno';const linhas=d.inds.map(i=>{const v=d.row[i]||'',low=uesNotaHistoricoV101(v,d.heads[i]);return `<tr><th>${esc(d.heads[i])}</th><td${low?' style="color:#b42318;font-weight:800"':''}>${esc(v||'—')}</td></tr>`}).join('');const w=open('','_blank');w.document.write(`<html><head><meta charset="utf-8"><title>Histórico - ${esc(nome)}</title><style>body{font-family:Arial;padding:28px;color:#15384c}h1{color:#073b61}table{width:100%;border-collapse:collapse}th,td{border:1px solid #d7e3e9;padding:9px;text-align:left}th{background:#eef6fa;width:35%}.meta{margin-bottom:18px}</style></head><body><h1>UNIVERSIDADE DA ESCOLA SABATINA</h1><div class="meta"><b>${esc(nome)}</b><br>Módulo: ${esc(d.mod)}</div><table>${linhas}</table><script>print()<\/script></body></html>`);w.document.close()}
 function enviarHistoricoWhatsAppV104(idx){const d=historicoAlunoDadosV104(idx),nome=d.row[0]||'Aluno',numero=String(d.whatsapp||'').replace(/\D/g,'');if(!numero){toast('Este aluno não possui WhatsApp cadastrado.',true);return}const n=(numero.length===10||numero.length===11)?'55'+numero:numero;const linhas=d.inds.filter(i=>String(d.row[i]||'').trim()).map(i=>`*${d.heads[i]}:* ${d.row[i]}`).join('\n');const msg=`📚 *UNIVERSIDADE DA ESCOLA SABATINA*\n\n*Histórico Acadêmico*\nAluno: ${nome}\nMódulo: ${d.mod}\n\n${linhas}`;window.open('https://api.whatsapp.com/send?phone='+encodeURIComponent(n)+'&text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')}
 async function gerarRelatorioEvolucao(){try{const r=await callServer('webAppGerarRelatorioEvolucao');renderReport(r,'Relatório de Evolução da Turma')}catch(e){toast(e.message,true)}}
 async function gerarListaSuperacao(){try{const r=await callServer('webAppGerarListaSuperacao');renderReport(r,'Lista de Superação')}catch(e){toast(e.message,true)}}
