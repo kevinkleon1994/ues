@@ -106,7 +106,7 @@
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
+    body.sidebar-collapsed .nav button::after,body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
@@ -447,6 +447,39 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
 }
 </style>
 
+
+<style id="ues-menu-collapsed-clean">
+@media (min-width:851px){
+  body.sidebar-collapsed .sidebar{
+    overflow-x:hidden!important;
+  }
+  body.sidebar-collapsed .nav{
+    overflow-x:hidden!important;
+  }
+  body.sidebar-collapsed .nav button{
+    overflow:hidden!important;
+    max-width:100%!important;
+  }
+  body.sidebar-collapsed .nav-label{
+    display:none!important;
+    width:0!important;
+    max-width:0!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    white-space:nowrap!important;
+  }
+  body.sidebar-collapsed .nav button::after,
+  body.sidebar-collapsed .nav button:hover::after,
+  body.sidebar-collapsed .nav button:focus::after,
+  body.sidebar-collapsed .nav button:focus-visible::after{
+    display:none!important;
+    content:none!important;
+  }
+}
+</style>
+
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
@@ -507,14 +540,14 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
       <div class="brand-copy"><h1>UES Gestão Acadêmica</h1><p>Universidade da Escola Sabatina</p></div>
     </div>
     <nav class="nav">
-      <button class="active" data-view="dashboard" data-label="Dashboard" title="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
-      <button data-view="aulas" data-label="Aulas" title="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
-      <button data-view="alunos" data-label="Alunos" title="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
-      <button data-view="historico" data-label="Histórico" title="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
-      <button data-view="relatorios" data-label="Relatórios" title="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
-      <button data-view="mensagens" data-label="Central de Mensagens" title="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
-      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor" title="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
-      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios" title="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
+      <button class="active" data-view="dashboard" data-label="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
+      <button data-view="aulas" data-label="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
+      <button data-view="alunos" data-label="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
+      <button data-view="historico" data-label="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
+      <button data-view="relatorios" data-label="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
+      <button data-view="mensagens" data-label="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
+      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
+      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
     </nav>
     <div class="sidebar-user-card"><div class="user-box"><img id="sidebarUserAvatar" class="sidebar-user-avatar" alt="Foto do usuário"><div class="sidebar-user-copy"><strong id="sidebarUserName">Usuário</strong><span id="sidebarUserRole">Função</span><button type="button" onclick="sairUESV302()">Sair</button></div></div></div>
     <div class="side-foot">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.4</div>
@@ -789,7 +822,7 @@ function printReport(){const html=$('reportPreview').innerHTML;const w=open('','
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
+    body.sidebar-collapsed .nav button::after,body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
