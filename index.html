@@ -4,13 +4,13 @@
   <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>UES Gestão Acadêmica</title>
+  <title>UES | Gestão Acadêmica</title>
   <meta name="theme-color" content="#073b61">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="UES Gestão">
-  <meta name="application-name" content="UES Gestão Acadêmica">
+  <meta name="application-name" content="UES | Gestão Acadêmica">
   <meta name="description" content="Sistema premium de gestão acadêmica da Universidade da Escola Sabatina.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -106,7 +106,7 @@
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
+    body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
@@ -447,6 +447,241 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
 }
 </style>
 
+
+<style id="ues-safe-collapsed-menu">
+@media (min-width:851px){
+  body.sidebar-collapsed .sidebar{
+    overflow-x:hidden!important;
+  }
+
+  body.sidebar-collapsed .nav{
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  body.sidebar-collapsed .nav button{
+    width:100%!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  body.sidebar-collapsed .nav-label{
+    display:none!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    overflow:hidden!important;
+    white-space:nowrap!important;
+  }
+
+  body.sidebar-collapsed .nav button::after,
+  body.sidebar-collapsed .nav button:hover::after,
+  body.sidebar-collapsed .nav button:focus::after,
+  body.sidebar-collapsed .nav button:focus-visible::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  body.sidebar-collapsed .nav .ico{
+    margin:0 auto!important;
+    flex:0 0 auto!important;
+  }
+
+  body.sidebar-collapsed .sidebar-user-card{
+    overflow-x:hidden!important;
+  }
+}
+</style>
+
+
+<style id="ues-developer-premium-safe">
+#view-desenvolvedor .page-head{
+  margin-bottom:14px;
+  align-items:flex-end;
+}
+#view-desenvolvedor .page-head h2{
+  margin:0 0 4px;
+  letter-spacing:-.02em;
+}
+#view-desenvolvedor .page-head p{
+  margin:0;
+  color:#6c7f89;
+}
+#view-desenvolvedor .user-admin-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(430px,.9fr);
+  gap:16px;
+  align-items:start;
+}
+#view-desenvolvedor .user-admin-grid.ues-editor-hidden{
+  grid-template-columns:minmax(0,1fr);
+}
+#view-desenvolvedor .user-admin-grid.ues-editor-hidden .user-editor{
+  display:none!important;
+}
+#view-desenvolvedor .user-admin-list,
+#view-desenvolvedor .user-editor{
+  background:#fff;
+  border:1px solid #dbe7ed;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(22,61,82,.055);
+}
+#view-desenvolvedor .user-admin-list{
+  padding:18px;
+}
+#view-desenvolvedor .user-editor{
+  padding:18px;
+  position:sticky;
+  top:86px;
+}
+#view-desenvolvedor .user-admin-list > h3,
+#view-desenvolvedor .user-editor > h3{
+  color:#123d56;
+  font-size:18px;
+  margin:0 0 14px;
+}
+#view-desenvolvedor #listaUsuariosSistema{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:12px;
+}
+#view-desenvolvedor #listaUsuariosSistema.empty{
+  display:block;
+}
+#view-desenvolvedor .user-row{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:162px;
+  padding:14px!important;
+  margin:0!important;
+  border:1px solid #e1eaee!important;
+  border-radius:14px;
+  background:linear-gradient(180deg,#fff,#fbfdfe);
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+}
+#view-desenvolvedor .user-row:hover{
+  transform:translateY(-1px);
+  border-color:#c8dde7!important;
+  box-shadow:0 7px 18px rgba(16,69,96,.07);
+}
+#view-desenvolvedor .user-row:last-child{
+  border-bottom:1px solid #e1eaee!important;
+}
+#view-desenvolvedor .user-row-main{
+  display:grid!important;
+  grid-template-columns:52px minmax(0,1fr)!important;
+  gap:11px!important;
+  align-items:start!important;
+}
+#view-desenvolvedor .user-list-avatar{
+  width:48px!important;
+  height:48px!important;
+  border-radius:50%!important;
+  object-fit:cover;
+  border:2px solid #fff;
+  box-shadow:0 0 0 1px #d8e4ea;
+}
+#view-desenvolvedor .user-row b{
+  display:block;
+  margin:1px 0 3px;
+  color:#173f56;
+  font-size:14px;
+  line-height:1.25;
+}
+#view-desenvolvedor .user-row small{
+  display:block;
+  margin:0!important;
+  color:#6f828c!important;
+  font-size:11px!important;
+  line-height:1.4;
+}
+#view-desenvolvedor .dev-status{
+  border-radius:999px!important;
+  padding:4px 8px!important;
+  font-size:9px!important;
+  font-weight:900!important;
+}
+#view-desenvolvedor .dev-actions{
+  margin-top:12px!important;
+  padding-top:11px;
+  border-top:1px solid #edf2f5;
+  gap:6px!important;
+}
+#view-desenvolvedor .dev-actions .btn{
+  min-height:30px;
+  padding:5px 10px!important;
+  border-radius:8px!important;
+  font-size:11px!important;
+}
+#view-desenvolvedor .user-editor .form-grid{
+  gap:12px;
+}
+#view-desenvolvedor .user-editor label{
+  font-size:11px;
+  color:#334f60;
+}
+#view-desenvolvedor .user-editor input,
+#view-desenvolvedor .user-editor select{
+  min-height:41px;
+  border-radius:9px;
+}
+#view-desenvolvedor .user-photo-editor{
+  border:1px solid #dfe9ee;
+  background:#f8fbfc;
+  border-radius:12px;
+  padding:12px;
+}
+#view-desenvolvedor .module-checks{
+  gap:8px;
+}
+#view-desenvolvedor .module-check{
+  min-height:38px;
+  border-radius:9px;
+  background:#fbfdfe;
+}
+body.dark-mode #view-desenvolvedor .user-admin-list,
+body.dark-mode #view-desenvolvedor .user-editor,
+body.dark-mode #view-desenvolvedor .user-row{
+  background:#102635!important;
+  border-color:#294657!important;
+}
+body.dark-mode #view-desenvolvedor .user-row{
+  background:linear-gradient(180deg,#132b3a,#102635)!important;
+}
+body.dark-mode #view-desenvolvedor .user-row b,
+body.dark-mode #view-desenvolvedor .user-admin-list > h3,
+body.dark-mode #view-desenvolvedor .user-editor > h3{
+  color:#e8f5fb!important;
+}
+body.dark-mode #view-desenvolvedor .user-row small,
+body.dark-mode #view-desenvolvedor .page-head p{
+  color:#9eb3bf!important;
+}
+body.dark-mode #view-desenvolvedor .dev-actions{
+  border-color:#294657;
+}
+@media(max-width:1100px){
+  #view-desenvolvedor .user-admin-grid{
+    grid-template-columns:1fr;
+  }
+  #view-desenvolvedor .user-editor{
+    position:static;
+  }
+}
+@media(max-width:700px){
+  #view-desenvolvedor #listaUsuariosSistema{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
 </head>
 <body class="ues-locked"><div class="sync-bar" aria-hidden="true"></div>
 
@@ -507,14 +742,14 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
       <div class="brand-copy"><h1>UES Gestão Acadêmica</h1><p>Universidade da Escola Sabatina</p></div>
     </div>
     <nav class="nav">
-      <button class="active" data-view="dashboard" data-label="Dashboard" title="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
-      <button data-view="aulas" data-label="Aulas" title="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
-      <button data-view="alunos" data-label="Alunos" title="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
-      <button data-view="historico" data-label="Histórico" title="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
-      <button data-view="relatorios" data-label="Relatórios" title="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
-      <button data-view="mensagens" data-label="Central de Mensagens" title="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
-      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor" title="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
-      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios" title="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
+      <button class="active" data-view="dashboard" data-label="Dashboard"><span class="ico">▦</span><span class="nav-label">Dashboard</span></button>
+      <button data-view="aulas" data-label="Aulas"><span class="ico">▤</span><span class="nav-label">Aulas</span></button>
+      <button data-view="alunos" data-label="Alunos"><span class="ico">♟</span><span class="nav-label">Alunos</span></button>
+      <button data-view="historico" data-label="Histórico"><span class="ico">≡</span><span class="nav-label">Histórico</span></button>
+      <button data-view="relatorios" data-label="Relatórios"><span class="ico">▥</span><span class="nav-label">Relatórios</span></button>
+      <button data-view="mensagens" data-label="Central de Mensagens"><span class="ico">✉</span><span class="nav-label">Central de Mensagens</span></button>
+      <button class="developer-only hidden" data-view="desenvolvedor" data-label="Opções do desenvolvedor"><span class="ico">⚙</span><span class="nav-label">Opções do desenvolvedor</span></button>
+      <button type="button" id="btnSistemaSorteios" data-label="Sistema de Sorteios"><span class="ico">★</span><span class="nav-label">Sistema de Sorteios</span></button>
     </nav>
     <div class="sidebar-user-card"><div class="user-box"><img id="sidebarUserAvatar" class="sidebar-user-avatar" alt="Foto do usuário"><div class="sidebar-user-copy"><strong id="sidebarUserName">Usuário</strong><span id="sidebarUserRole">Função</span><button type="button" onclick="sairUESV302()">Sair</button></div></div></div>
     <div class="side-foot">Desenvolvido por Kevin Fernandes · © 2026 · Versão v.1.0.5</div>
@@ -595,7 +830,7 @@ body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#0
       
 <section class="view" id="view-desenvolvedor">
   <div class="page-head"><div><h2>Opções do desenvolvedor</h2><p>Crie usuários, defina funções, status e acessos aos módulos do sistema.</p></div><button class="btn" type="button" onclick="novoUsuarioSistema()">+ Novo usuário</button></div>
-  <div class="user-admin-grid">
+  <div class="user-admin-grid ues-editor-hidden" id="userAdminGrid">
     <article class="user-admin-list"><h3>Usuários cadastrados</h3><div id="listaUsuariosSistema" class="empty">Carregando usuários...</div></article>
     <article class="user-editor"><h3 id="tituloEditorUsuario">Novo usuário</h3>
       <form id="formUsuarioSistema" onsubmit="salvarUsuarioSistema(event)"><input type="hidden" id="usuarioSistemaId">
@@ -623,8 +858,8 @@ const APP={view:'dashboard',alunos:[],aulas:[],mensagens:[],charts:{},baseUrl:lo
 // v2.5 — sessão, permissões e administração de usuários
 APP.perfil=null;APP.usuariosSistema=[];APP.modulosSistema=[];
 const ROTULOS_MODULOS={dashboard:'Dashboard',alunos:'Alunos',aulas:'Aulas',mensagens:'Central de Mensagens',relatorios:'Relatórios',historico:'Histórico'};
-function salvarPerfilSessao(perfil){APP.perfil=perfil;try{localStorage.setItem('ues-perfil-v105',JSON.stringify(perfil));localStorage.setItem('ues-auth-v105','1')}catch(e){}aplicarPermissoesPerfil()}
-function carregarPerfilSessao(){try{const p=JSON.parse(localStorage.getItem('ues-perfil-v105')||'null');if(p)APP.perfil=p}catch(e){}return APP.perfil}
+function salvarPerfilSessao(perfil){APP.perfil=perfil;try{localStorage.setItem('ues-perfil-v104',JSON.stringify(perfil));localStorage.setItem('ues-auth-v104','1')}catch(e){}aplicarPermissoesPerfil()}
+function carregarPerfilSessao(){try{const p=JSON.parse(localStorage.getItem('ues-perfil-v104')||'null');if(p)APP.perfil=p}catch(e){}return APP.perfil}
 function usuarioPode(modulo){return Boolean(APP.perfil&&(APP.perfil.desenvolvedor||Array.isArray(APP.perfil.modulos)&&APP.perfil.modulos.includes(modulo)))}
 function aplicarPermissoesPerfil(){
   document.querySelectorAll('.nav button[data-view]').forEach(b=>{const m=b.dataset.view;b.classList.toggle('hidden',m==='desenvolvedor'?!APP.perfil?.desenvolvedor:!usuarioPode(m))});
@@ -632,12 +867,12 @@ function aplicarPermissoesPerfil(){
   const info=$('sessionUserInfo');if(info&&APP.perfil)info.textContent=APP.perfil.nome+' · '+APP.perfil.funcao;
 }
 function primeiroModuloPermitido(){return ['dashboard','aulas','alunos','historico','relatorios','mensagens'].find(usuarioPode)||(APP.perfil?.desenvolvedor?'desenvolvedor':'dashboard')}
-async function loadUsuariosSistema(){if(!APP.perfil?.desenvolvedor)return;const r=await callServer('webAppListarUsuarios',APP.perfil.token);APP.usuariosSistema=r.usuarios||[];APP.modulosSistema=r.modulos||Object.keys(ROTULOS_MODULOS);renderUsuariosSistema();novoUsuarioSistema()}
+async function loadUsuariosSistema(){if(!APP.perfil?.desenvolvedor)return;const r=await callServer('webAppListarUsuarios',APP.perfil.token);APP.usuariosSistema=r.usuarios||[];APP.modulosSistema=r.modulos||Object.keys(ROTULOS_MODULOS);renderUsuariosSistema();document.getElementById('userAdminGrid')?.classList.add('ues-editor-hidden')}
 function renderUsuariosSistema(){const box=$('listaUsuariosSistema');if(!box)return;box.innerHTML=APP.usuariosSistema.length?APP.usuariosSistema.map(u=>`<div class="user-row"><div class="user-row-main"><img class="user-list-avatar" src="${esc(u.foto||'')}" onerror="this.style.visibility='hidden'" alt=""><div><b>${esc(u.nome)}</b><small>@${esc(u.usuario)} · ${esc(u.funcao)}<br>${esc((u.modulos||[]).map(m=>ROTULOS_MODULOS[m]||m).join(', '))}</small><div class="dev-actions"><button class="btn small secondary" onclick="editarUsuarioSistema('${esc(u.id)}')">Editar</button><button class="btn small ${u.ativo?'red':'green'}" onclick="alternarUsuarioSistema('${esc(u.id)}',${!u.ativo})">${u.ativo?'Inativar':'Ativar'}</button><button class="btn small red" onclick="excluirUsuarioSistema('${esc(u.id)}')">Excluir</button></div></div></div><span class="dev-status ${u.ativo?'active':'inactive'}">${u.ativo?'Ativo':'Inativo'}</span></div>`).join(''):'<div class="empty">Nenhum usuário cadastrado.</div>'}
 function renderChecksModulos(selecionados=[]){$('modulosUsuarioSistema').innerHTML=(APP.modulosSistema.length?APP.modulosSistema:Object.keys(ROTULOS_MODULOS)).map(m=>`<label class="module-check"><input type="checkbox" name="moduloUsuario" value="${m}" ${selecionados.includes(m)?'checked':''}> ${ROTULOS_MODULOS[m]||m}</label>`).join('')}
-function novoUsuarioSistema(){$('formUsuarioSistema')?.reset();APP.fotoUsuarioPendente=null;if($('usuarioSistemaId'))$('usuarioSistemaId').value='';if($('usuarioSistemaFoto'))$('usuarioSistemaFoto').value='';if($('usuarioSistemaFotoPreview'))$('usuarioSistemaFotoPreview').removeAttribute('src');if($('tituloEditorUsuario'))$('tituloEditorUsuario').textContent='Novo usuário';renderChecksModulos([])}
-function editarUsuarioSistema(id){const u=APP.usuariosSistema.find(x=>x.id===id);if(!u)return;APP.fotoUsuarioPendente=null;$('tituloEditorUsuario').textContent='Editar usuário';$('usuarioSistemaId').value=u.id;$('usuarioSistemaNome').value=u.nome;$('usuarioSistemaLogin').value=u.usuario;$('usuarioSistemaSenha').value='';$('usuarioSistemaFuncao').value=u.funcao;$('usuarioSistemaAtivo').value=String(u.ativo);$('usuarioSistemaFoto').value=u.foto||'';if(u.foto)$('usuarioSistemaFotoPreview').src=u.foto;else $('usuarioSistemaFotoPreview').removeAttribute('src');renderChecksModulos(u.modulos||[])}
-async function salvarUsuarioSistema(e){e.preventDefault();try{const foto=await enviarFotoUsuarioPendenteV104();const d={id:$('usuarioSistemaId').value,nome:$('usuarioSistemaNome').value,usuario:$('usuarioSistemaLogin').value,senha:$('usuarioSistemaSenha').value,funcao:$('usuarioSistemaFuncao').value,ativo:$('usuarioSistemaAtivo').value==='true',foto:foto||'',modulos:[...document.querySelectorAll('input[name="moduloUsuario"]:checked')].map(x=>x.value)};const r=await callServer('webAppSalvarUsuario',APP.perfil.token,d);toast(r.mensagem||'Usuário salvo.');await loadUsuariosSistema()}catch(err){toast(err.message,true)}}
+function novoUsuarioSistema(){$('formUsuarioSistema')?.reset();APP.fotoUsuarioPendente=null;if($('usuarioSistemaId'))$('usuarioSistemaId').value='';if($('usuarioSistemaFoto'))$('usuarioSistemaFoto').value='';if($('usuarioSistemaFotoPreview'))$('usuarioSistemaFotoPreview').removeAttribute('src');if($('tituloEditorUsuario'))$('tituloEditorUsuario').textContent='Novo usuário';renderChecksModulos([]);document.getElementById('userAdminGrid')?.classList.remove('ues-editor-hidden')}
+function editarUsuarioSistema(id){const u=APP.usuariosSistema.find(x=>x.id===id);if(!u)return;APP.fotoUsuarioPendente=null;$('tituloEditorUsuario').textContent='Editar usuário';$('usuarioSistemaId').value=u.id;$('usuarioSistemaNome').value=u.nome;$('usuarioSistemaLogin').value=u.usuario;$('usuarioSistemaSenha').value='';$('usuarioSistemaFuncao').value=u.funcao;$('usuarioSistemaAtivo').value=String(u.ativo);$('usuarioSistemaFoto').value=u.foto||'';if(u.foto)$('usuarioSistemaFotoPreview').src=u.foto;else $('usuarioSistemaFotoPreview').removeAttribute('src');renderChecksModulos(u.modulos||[]);document.getElementById('userAdminGrid')?.classList.remove('ues-editor-hidden')}
+async function salvarUsuarioSistema(e){e.preventDefault();try{const foto=await enviarFotoUsuarioPendenteV104();const d={id:$('usuarioSistemaId').value,nome:$('usuarioSistemaNome').value,usuario:$('usuarioSistemaLogin').value,senha:$('usuarioSistemaSenha').value,funcao:$('usuarioSistemaFuncao').value,ativo:$('usuarioSistemaAtivo').value==='true',foto:foto||'',modulos:[...document.querySelectorAll('input[name="moduloUsuario"]:checked')].map(x=>x.value)};const r=await callServer('webAppSalvarUsuario',APP.perfil.token,d);toast(r.mensagem||'Usuário salvo.');await loadUsuariosSistema();document.getElementById('userAdminGrid')?.classList.add('ues-editor-hidden')}catch(err){toast(err.message,true)}}
 async function alternarUsuarioSistema(id,ativo){try{await callServer('webAppAlternarUsuario',APP.perfil.token,id,ativo);await loadUsuariosSistema();toast(ativo?'Usuário ativado.':'Usuário inativado.')}catch(err){toast(err.message,true)}}
 async function excluirUsuarioSistema(id){if(!confirm('Excluir definitivamente este usuário?'))return;try{await callServer('webAppExcluirUsuario',APP.perfil.token,id);await loadUsuariosSistema();toast('Usuário excluído.')}catch(err){toast(err.message,true)}}
 
@@ -685,7 +920,7 @@ function badgeClass(s){s=String(s||'').toUpperCase();return s.includes('APROV')|
 function tipoBadgeClass(s){s=String(s||'').toUpperCase();return s.includes('PEND')?'type-pendencia':s.includes('SUPERA')?'type-superacao':s.includes('APROV')?'type-aprovado':badgeClass(s)}
 function fmt(v){return v||'—'}
 function atualizarContagem(prefix,total,rotulo){const formas={aluno:['aluno exibido','alunos exibidos'],aula:['aula exibida','aulas exibidas'],linha:['linha exibida','linhas exibidas']};const f=formas[rotulo]||[rotulo+' exibido',rotulo+'s exibidos'];const texto=`${total} ${total===1?f[0]:f[1]}`;const a=$(prefix+'Top'),b=$(prefix+'Bottom');if(a)a.textContent=texto;if(b)b.textContent=texto}
-function showView(name){if(name==='desenvolvedor'&&!APP.perfil?.desenvolvedor){toast('Acesso restrito ao desenvolvedor.',true);return}if(name!=='desenvolvedor'&&!usuarioPode(name)){toast('Seu usuário não possui acesso a este módulo.',true);return}APP.view=name;try{localStorage.setItem('ues-view-v105',name)}catch(e){}document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$('view-'+name).classList.add('active');document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));const titles={dashboard:['Dashboard','Visão geral da Universidade da Escola Sabatina'],alunos:['Alunos','Cadastro e acompanhamento acadêmico'],aulas:['Aulas','Configuração de avaliações e períodos'],mensagens:['Central de Mensagens','Comunicação e acompanhamento de envios'],relatorios:['Relatórios','Documentos e análises acadêmicas'],historico:['Histórico','Consulta completa do histórico acadêmico'],desenvolvedor:['Opções do desenvolvedor','Usuários, funções e permissões']};$('pageTitle').textContent=titles[name][0];$('pageSubtitle').textContent=titles[name][1];const dt=$('dailyText');if(dt){dt.hidden=name!=='dashboard';dt.setAttribute('aria-hidden',String(name!=='dashboard'));}if(name==='dashboard'&&typeof carregarTextoDiarioV31==='function')carregarTextoDiarioV31();loadView(name)}
+function showView(name){if(name==='desenvolvedor'&&!APP.perfil?.desenvolvedor){toast('Acesso restrito ao desenvolvedor.',true);return}if(name!=='desenvolvedor'&&!usuarioPode(name)){toast('Seu usuário não possui acesso a este módulo.',true);return}APP.view=name;try{localStorage.setItem('ues-view-v104',name)}catch(e){}document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$('view-'+name).classList.add('active');document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));const titles={dashboard:['Dashboard','Visão geral da Universidade da Escola Sabatina'],alunos:['Alunos','Cadastro e acompanhamento acadêmico'],aulas:['Aulas','Configuração de avaliações e períodos'],mensagens:['Central de Mensagens','Comunicação e acompanhamento de envios'],relatorios:['Relatórios','Documentos e análises acadêmicas'],historico:['Histórico','Consulta completa do histórico acadêmico'],desenvolvedor:['Opções do desenvolvedor','Usuários, funções e permissões']};$('pageTitle').textContent=titles[name][0];$('pageSubtitle').textContent=titles[name][1];const dt=$('dailyText');if(dt){dt.hidden=name!=='dashboard';dt.setAttribute('aria-hidden',String(name!=='dashboard'));}if(name==='dashboard'&&typeof carregarTextoDiarioV31==='function')carregarTextoDiarioV31();loadView(name)}
 function abrirSistemaSorteios(){setMobileMenu(false);window.open('https://kevinkleon1994.github.io/ues-sorteios/','_blank','noopener,noreferrer')}
 document.querySelectorAll('.nav button[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 if($('btnSistemaSorteios'))$('btnSistemaSorteios').onclick=abrirSistemaSorteios;
@@ -789,7 +1024,7 @@ function printReport(){const html=$('reportPreview').innerHTML;const w=open('','
     body.sidebar-collapsed .nav .ico{width:26px;font-size:18px}
     body.sidebar-collapsed .sidebar-collapse .collapse-icon{transform:rotate(180deg)}
     body.sidebar-collapsed .nav button{position:relative}
-    body.sidebar-collapsed .nav button:hover::after{content:attr(data-label);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#173d52;color:#fff;padding:7px 10px;border-radius:7px;font-size:12px;white-space:nowrap;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.22)}
+    body.sidebar-collapsed .nav button:hover::after{display:none!important;content:none!important}
     @media(max-width:850px){
       body.sidebar-collapsed .shell{display:block}
       body.sidebar-collapsed .sidebar{width:min(86vw,320px);padding:18px 14px}
@@ -1086,8 +1321,8 @@ async function autenticarUES(event){
 if($('loginForm'))$('loginForm').addEventListener('submit',autenticarUES);
 (async function init(){
   await carregarConfiguracaoVisual();
-  let autenticado=false;try{autenticado=localStorage.getItem('ues-auth-v105')==='1';carregarPerfilSessao()}catch(e){}
-  if(autenticado&&APP.perfil&&APP.perfil.token){try{const vr=await callServer('webAppValidarSessao',APP.perfil.token);if(!vr||!vr.sucesso)throw new Error('Sessão inválida');APP.perfil=Object.assign({},APP.perfil,vr.perfil||{},{token:APP.perfil.token});salvarPerfilSessao(APP.perfil);document.body.classList.remove('ues-locked');$('loginScreen').classList.add('hidden');aplicarPermissoesPerfil();let view='';try{view=localStorage.getItem('ues-view-v105')||''}catch(e){}showView(view&&usuarioPode(view)?view:primeiroModuloPermitido())}catch(e){try{localStorage.removeItem('ues-auth-v105');localStorage.removeItem('ues-perfil-v105')}catch(_){}}}
+  let autenticado=false;try{autenticado=localStorage.getItem('ues-auth-v104')==='1';carregarPerfilSessao()}catch(e){}
+  if(autenticado&&APP.perfil&&APP.perfil.token){try{const vr=await callServer('webAppValidarSessao',APP.perfil.token);if(!vr||!vr.sucesso)throw new Error('Sessão inválida');APP.perfil=Object.assign({},APP.perfil,vr.perfil||{},{token:APP.perfil.token});salvarPerfilSessao(APP.perfil);document.body.classList.remove('ues-locked');$('loginScreen').classList.add('hidden');aplicarPermissoesPerfil();let view='';try{view=localStorage.getItem('ues-view-v104')||''}catch(e){}showView(view&&usuarioPode(view)?view:primeiroModuloPermitido())}catch(e){try{localStorage.removeItem('ues-auth-v104');localStorage.removeItem('ues-perfil-v104')}catch(_){}}}
 })();
 </script>
 <script>
@@ -1101,7 +1336,7 @@ function atualizarPerfilLateralV302(){
   const avatar=document.getElementById('sidebarUserAvatar');if(avatar){if(p.foto){avatar.src=p.foto}else{avatar.removeAttribute('src')}}
 }
 function sairUESV302(){
-  try{localStorage.removeItem('ues-auth-v105');localStorage.removeItem('ues-perfil-v105');localStorage.removeItem('ues-view-v105')}catch(e){}
+  try{localStorage.removeItem('ues-auth-v104');localStorage.removeItem('ues-perfil-v104');localStorage.removeItem('ues-view-v104')}catch(e){}
   APP.perfil=null;
   document.body.classList.add('ues-locked');
   document.body.classList.remove('presentation-mode');
