@@ -1,11 +1,11 @@
 {
-  "id": "./?source=pwa&version=3.0",
+  "id": "./?source=pwa&version=1.0.5",
   "name": "UES | Gestão Acadêmica",
   "short_name": "UES Gestão",
-  "description": "Sistema de Gestão Acadêmica da Universidade da Escola Sabatina — versão 1.0.4.",
+  "description": "Sistema de Gestão Acadêmica da Universidade da Escola Sabatina — versão 1.0.5 Enterprise.",
   "lang": "pt-BR",
   "dir": "ltr",
-  "start_url": "./?source=pwa&version=3.0",
+  "start_url": "./?source=pwa&version=1.0.5",
   "scope": "./",
   "display": "standalone",
   "display_override": [
@@ -54,5 +54,5 @@
       ]
     }
   ],
-  "version": "1.0.1"
+  "version": "1.0.5"
 }
